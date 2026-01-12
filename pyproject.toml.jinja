@@ -1,0 +1,23 @@
+[project]
+name = "{{ project_name_kebab_case }}"
+version = "0.1.0"
+description = "{{ project_tldr }}"
+readme = "README.md"
+requires-python = ">=3.12"
+authors = [{ name = "jiezhuzzz", email = "jiezzz@duck.com" }]
+dependencies = [
+  "loguru>=0.7.3",
+  "pydantic>=2.12.5",
+  "rich>=14.2.0",
+]
+
+[project.scripts]  # https://docs.astral.sh/uv/concepts/projects/config/#command-line-interfaces
+{{ project_name_kebab_case }} = "{{ project_name_snake_case }}.cli:app"
+
+[build-system]
+requires = ["uv_build>=0.9.18,<0.10.0"]
+build-backend = "uv_build"
+
+[tool.ruff]  # https://docs.astral.sh/ruff/settings/
+line-length = 120
+src = ["src", "tests"]

@@ -1,0 +1,15 @@
+project_name:
+    type: str
+    help: Project name.
+
+project_tldr:
+    type: str
+    help: TL;DR of your project.
+
+project_name_kebab_case:
+    when: false
+    default: "{{ project_name | lower | replace(' ', '-') }}"
+
+project_name_snake_case:
+    when: false
+    default: "{{ project_name | lower | replace(' ', '_') }}"
