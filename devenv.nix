@@ -3,7 +3,8 @@
   lib,
   config,
   ...
-}: {
+}:
+{
   env.UV_PYTHON_DOWNLOADS = lib.mkForce "auto";
   env.UV_PYTHON_PREFERENCE = lib.mkForce "managed";
   languages.python = {
@@ -50,15 +51,15 @@
       # TOML
       tombi = {
         command = "${pkgs.tombi}/bin/tombi";
-        includes = ["*.toml"];
-        options = ["format"];
+        includes = [ "*.toml" ];
+        options = [ "format" ];
       };
     };
   };
 
   git-hooks.package = pkgs.prek;
   git-hooks.hooks = {
-    # Format
+    # Format & Lint
     treefmt.enable = true;
     # Python
     uv-lock.enable = true;
@@ -71,6 +72,8 @@
       language = "system";
       pass_filenames = false;
     };
+    # Secrets
+    ripsecrets.enable = true;
   };
   # See full reference at https://devenv.sh/reference/options/
 }
