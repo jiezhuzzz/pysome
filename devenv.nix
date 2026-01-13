@@ -6,16 +6,15 @@
 }: {
   env.UV_PYTHON_DOWNLOADS = lib.mkForce "auto";
   env.UV_PYTHON_PREFERENCE = lib.mkForce "managed";
-  languages = {
-    python = {
+  languages.python = {
+    enable = true;
+    uv = {
       enable = true;
-      uv = {
-        enable = true;
-        sync.enable = true;
-      };
+      sync.enable = true;
     };
   };
   enterShell = ''
+    # for editors/IDEs
     ln -sfn ${config.env.DEVENV_STATE}/venv .venv
   '';
 
