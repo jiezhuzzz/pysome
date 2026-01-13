@@ -1,0 +1,19 @@
+name: treefmt
+on:
+    pull_request:
+    push:
+        branches: [main]
+jobs:
+    formatter:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v6
+            - uses: DeterminateSystems/determinate-nix-action@main
+            - uses: cachix/cachix-action@v16
+              with:
+                  name: devenv
+            - name: Install devenv.sh
+              run: nix profile install nixpkgs#devenv
+
+            - name: Build the devenv shell and run any pre-commit hooks
+              run: devenv test
