@@ -19,8 +19,5 @@ copyright_year:
     default: "{{ copyright_year | default(now.year) }}"
     when: false
 
-_copy_without_render:
-    - eval/flake.nix.jinja
-
 _tasks:
     - "git init"

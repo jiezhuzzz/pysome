@@ -17,7 +17,9 @@
 
       config = {
         Entrypoint = [ "${pkgs.hello}/bin/hello" ];
-
+        Volumes = {
+          "/data" = {};
+        };
         Env = [
           "PATH=/bin"
         ];
