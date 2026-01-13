@@ -19,9 +19,14 @@
     ln -sfn ${config.env.DEVENV_STATE}/venv .venv
   '';
 
+  packages = with pkgs; [
+    just
+  ];
+
   treefmt = {
     enable = true;
     config.programs = {
+      # GitHub Actions
       actionlint.enable = true;
       # Nix
       alejandra.enable = true;
