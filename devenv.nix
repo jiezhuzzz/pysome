@@ -31,8 +31,6 @@
       # Nix
       alejandra.enable = true;
       statix.enable = true;
-      # Rust
-      rustfmt.enable = true;
       # Python
       ruff-check.enable = true;
       ruff-format.enable = true;
@@ -43,8 +41,6 @@
       mdformat.enable = true;
       # YAML
       yamlfmt.enable = true;
-      # JSON
-      formatjson5.enable = true;
       # Just
       just.enable = true;
       # Spelling
@@ -68,6 +64,7 @@
     # Python
     uv-lock.enable = true;
     # Git
+    convco.enable = true;
     check-branch = {
       enable = true;
       name = "Check branch name";
