@@ -18,3 +18,6 @@ copyright_year:
     type: str
     default: "{{ copyright_year | default(now.year) }}"
     when: false
+
+_tasks:
+    - "git init"
