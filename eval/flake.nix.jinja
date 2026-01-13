@@ -1,0 +1,27 @@
+{
+  inputs.nix2container.url = "github:nlewo/nix2container";
+
+  outputs = { self, nixpkgs, nix2container }: let
+    system = "x86_64-linux";
+    pkgs = import nixpkgs { inherit system; };
+    n2c = nix2container.packages.${system}.nix2container;
+  in {
+    packages.${system}.{{ container_name }} = n2c.buildImage {
+      copyToRoot = pkgs.buildEnv {
+        name = "rootfs";
+        paths = with pkgs; [
+          bash
+        ];
+        pathsToLink = [ "/bin" "/etc" "/share" ];
+      };
+
+      config = {
+        Entrypoint = [ "${pkgs.hello}/bin/hello" ];
+
+        Env = [
+          "PATH=/bin"
+        ];
+      };
+    };
+  };
+}
