@@ -20,4 +20,4 @@ copyright_year:
     when: false
 
 _tasks:
-    - "git init"
+    - "[ -d .git ] || git init"
